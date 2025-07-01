@@ -20,10 +20,10 @@ router.get("/",async (req, res) => {
 // Get user by ID
 router.get("/:id", async (req, res) => {
   try {
-    // Regular users can only access their own profile
-    if (req.user.role !== "Admin" && req.user.id !== req.params.id) {
-      return res.status(403).json({ error: "Not authorized" })
-    }
+    // // Regular users can only access their own profile
+    // if (req.user.role !== "Admin" && req.user.id !== req.params.id) {
+    //   return res.status(403).json({ error: "Not authorized" })
+    // }
 
     const user = await User.findById(req.params.id).select("-password").populate("department", "name")
 
